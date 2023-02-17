@@ -15,10 +15,20 @@ const generateColor = () => {
       <div class="color__box" style="background-color: ${randomHex}"></div>
       <span class="color__hex">${randomHex}</span>
     `;
+
+    color.addEventListener('click', () => copyColor(color, randomHex));
     colors.appendChild(color);
   }
 };
 
 generateColor();
+
+const copyColor = (elem, hexVal) => {
+  const colorElement = elem.querySelector('.color__hex');
+  navigator.clipboard.writeText(hexVal).then(() => {
+    colorElement.innerHTML = 'Copied';
+    setTimeout(() => colorElement.innerHTML = hexVal, 1000);
+  })
+}
 
 refreshBtn.addEventListener("click", generateColor);
