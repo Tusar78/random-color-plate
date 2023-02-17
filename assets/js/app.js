@@ -19,4 +19,6 @@ const generateColor = () => {
   }
 };
 
+generateColor();
+
 refreshBtn.addEventListener("click", generateColor);
